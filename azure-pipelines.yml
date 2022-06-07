@@ -69,7 +69,7 @@ stages:
         deploy:
           steps:
           - task: AzureWebApp@1
-            displayName: 'Azure Web App Deploy: vue-chess-app'
+            displayName: 'Azure Web App Deploy: vue-chess'
             inputs:
               azureSubscription: $(azureSubscription)
               appType: webAppLinux
