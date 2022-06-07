@@ -12,7 +12,7 @@ variables:
   azureSubscription: 'c3991b12-e9b1-4b19-81fc-bf169059c29a'
 
   # Web app name
-  webAppName: 'vue-chess'
+  webAppName: 'vue-chess-app'
 
   # Environment name
   environmentName: 'vue-chess'
