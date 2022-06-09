@@ -5,7 +5,6 @@
   let runServer = () => {
       require('./app')(process.cwd(), config, app => {
         app.listen(config.porthttp)
-        const port = process.env.PORT || 8080;
       });
   }
   if (config.multicore) {
