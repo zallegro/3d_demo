@@ -78,8 +78,8 @@ app.use(express.static(__dirname + '/../public', {maxAge: oneYear}));
 app.set('ipaddr', address);
 app.set('port', config.porthttp);
 require('../routers')(app, express, io);
-var server = https.createServer(options,app);
-//var server = http.createServer(options,app);
+//var server = https.createServer(options,app);
+var server = http.createServer(options,app);
 if (config.multicore){
 // use node socket clouster
 var redis = require('socket.io-redis');
