@@ -4,18 +4,20 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 trigger:
-- main
+- master
 
 variables:
 
   # Azure Resource Manager connection created during pipeline creation
-  azureSubscription: 'c3991b12-e9b1-4b19-81fc-bf169059c29a'
+  azureSubscription: 'bfad3e7a-6824-4cd1-9c88-b0dc2b8e3809'
 
   # Web app name
-  webAppName: 'vue-chess-app'
+  #webAppName: 'node-todo-mean'
+  webAppName: 'node-todo-31665'
 
   # Environment name
-  environmentName: 'vue-chess'
+  #environmentName: 'node-todo-mean'
+  environmentName:  'node-todo-31665'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
@@ -32,15 +34,15 @@ stages:
     steps:
     - task: NodeTool@0
       inputs:
-        versionSpec: '10.x'
+        versionSpec: '10.10'
       displayName: 'Install Node.js'
 
     - script: |
         cd vue-chess/server
         npm install
-    #  npm run build --if-present
-     #   npm run test --if-present
-      displayName: 'npm install'
+        #npm run build --if-present
+        #npm run test --if-present
+      displayName: 'npm install, build and test'
 
     - task: ArchiveFiles@2
       displayName: 'Archive files'
@@ -69,7 +71,7 @@ stages:
         deploy:
           steps:
           - task: AzureWebApp@1
-            displayName: 'Azure Web App Deploy: vue-chess'
+            displayName: 'Azure Web App Deploy: node-todo-61384'
             inputs:
               azureSubscription: $(azureSubscription)
               appType: webAppLinux
@@ -77,3 +79,4 @@ stages:
               runtimeStack: 'NODE|10.10'
               package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
               startUpCommand: 'npm run start'
+
