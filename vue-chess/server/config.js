@@ -11,7 +11,7 @@ var config = {
     },
     porthttp: process.env.PORT || 8080,
     multicore: false,
-    https: false,
+    https: true,
     debug: false
 }
 module.exports = config;
