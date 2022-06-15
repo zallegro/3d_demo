@@ -34,7 +34,7 @@ stages:
     steps:
     - task: NodeTool@0
       inputs:
-        versionSpec: '14.18'
+        versionSpec: '10.10'
       displayName: 'Install Node.js'
 
     - script: |
@@ -76,7 +76,7 @@ stages:
               azureSubscription: $(azureSubscription)
               appType: webAppLinux
               appName: $(webAppName)
-              runtimeStack: 'NODE|14.18'
+              runtimeStack: 'NODE|10.10'
               package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
               startUpCommand: 'pm2 start server.js --no-daemon'
 
