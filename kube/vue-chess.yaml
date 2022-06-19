@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: vue-chess
+spec:
+  selector:
+    app: vue-chess
+  ports:
+    - port: 3311
+      targetPort: 3311
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vue-chess
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vue-chess
+  template:
+    metadata:
+      labels:
+        app: vue-chess
+    spec:
+      containers:
+        - name: vue-chess
+          image: zallegro/vue-chess-img
+          ports:
+            - containerPort: 3311
+          env:
+            - name: MONGO_URL
+              value: mongodb://mongo:27017/vuegustchess
+          imagePullPolicy: Always
